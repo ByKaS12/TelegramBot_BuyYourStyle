@@ -5,11 +5,12 @@ using Telegram.Bot.Types.Enums;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.ReplyMarkups;
 using TelegramBot_BuyYourStyle;
-
-
+using TelegramBot_BuyYourStyle.Models;
 
 TelegramBotClient botClient = new TelegramBotClient("6056689939:AAF1p-qpx_1zS8ClqTnG6cfoCjRuaDrjjIQ");
 using CancellationTokenSource cts = new();
+ApplicationContext Context = new ApplicationContext();
+ClassToWorkTelegramBot WorkTelegramBot= new ClassToWorkTelegramBot(Context);
 List<InlineKeyboardMarkup> test = new List<InlineKeyboardMarkup>
 {
     new[] { ClassToWorkTelegramBot.CreateButton("Меню", "menu") },
@@ -21,7 +22,7 @@ List<InlineKeyboardMarkup> test = new List<InlineKeyboardMarkup>
     new[] { ClassToWorkTelegramBot.CreateButton("", "menu") }
 
 };
-
+Console.WriteLine(Path.GetDirectoryName(Environment.GetCommandLineArgs()[0]));
 // StartReceiving does not block the caller thread. Receiving is done on the ThreadPool.
 ReceiverOptions receiverOptions = new()
 {
